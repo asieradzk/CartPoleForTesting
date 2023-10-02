@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>exe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gym.NET" Version="0.2.0" />
+    <PackageReference Include="Gym.NET.Environments" Version="0.2.0" />
+    <PackageReference Include="Gym.NET.Rendering.WinForm" Version="0.2.0" />
+    <PackageReference Include="HIC.System.Windows.Forms.DataVisualization" Version="1.0.1" />
+    <PackageReference Include="OneOf" Version="3.0.263" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="TorchSharp-cuda-windows" Version="0.100.1" />
+    <PackageReference Include="TorchVision" Version="0.100.1" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RLMatrix">
+      <HintPath>..\..\RLMat2\RLMatrix\src\RLMatrix\bin\Release\net6.0\RLMatrix.dll</HintPath>
+    </Reference>
+    <Reference Include="RLMatrix.WinformsChart">
+      <HintPath>..\..\RLMat2\RLMatrix\src\RLMatrix.WinformsChart\bin\Release\net6.0-windows\RLMatrix.WinformsChart.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
