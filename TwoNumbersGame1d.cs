@@ -46,8 +46,10 @@ namespace CartPoleForTesting
             {
                 myState[i] = 9f;
             }
-            num1 = 0.2f; //pickRandoSmallNumber();
-            num2 = 5000f; //pickRandoLargeNumber();
+            num1 = 0.2f * 10f; 
+            //num1 = pickRandoSmallNumber()*10f;
+            num2 = 5000f/1000f; 
+            //num2 = pickRandoLargeNumber()/1000f;
             currentNum1 = 0f;
             currentNum2 = 0f;
             myState[0] = num1;
@@ -84,7 +86,7 @@ namespace CartPoleForTesting
                 Console.WriteLine("Reward: " + rewrd);
                 return rewrd;
             }
-            myState[stepCounter + 2] = actionId;
+            myState[stepCounter + 2] = actionId*0.01f;
             takeAction(actionId);
             stepCounter++;
 
