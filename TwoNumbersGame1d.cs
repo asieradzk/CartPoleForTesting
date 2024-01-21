@@ -15,7 +15,8 @@ namespace CartPoleForTesting
         public int maxSteps { get; set; }
         public bool isDone { get; set; }
         public OneOf<int, (int, int)> stateSize { get; set; }
-        public int actionSize { get; set; }
+        public int[] actionSize { get; set; }
+
         private float[] myState;
 
         public TwoNumbersGame1d()
@@ -38,7 +39,7 @@ namespace CartPoleForTesting
             isDone = false;
             stepCounter = 0;
             maxSteps = 40;
-            actionSize = 8; // from 0 to 7
+            actionSize = new int[] { 8 }; // from 0 to 7
             stateSize = 42;
             myState = new float[42];
             //set all to 9f
@@ -46,10 +47,10 @@ namespace CartPoleForTesting
             {
                 myState[i] = 9f;
             }
-            num1 = 0.2f * 10f; 
-            //num1 = pickRandoSmallNumber()*10f;
-            num2 = 5000f/1000f; 
-            //num2 = pickRandoLargeNumber()/1000f;
+            //num1 = 0.2f * 10f; 
+            num1 = pickRandoSmallNumber()*10f;
+            //num2 = 5000f/1000f; 
+            num2 = pickRandoLargeNumber()/1000f;
             currentNum1 = 0f;
             currentNum2 = 0f;
             myState[0] = num1;
@@ -62,8 +63,9 @@ namespace CartPoleForTesting
             Initialise();
         }
 
-        public float Step(int actionId)
+        public float Step(int[] actionsIds)
         {
+            var actionId = actionsIds[0];
 
             if(isDone)
             {
