@@ -10,26 +10,30 @@ var myChart = new WinformsChart();
 
 //PPO
 var optsppo = new PPOAgentOptions(
-    batchSize: 24,           // Number of EPISODES agent interacts with environment before learning from its experience
+    batchSize: 1,           // Number of EPISODES agent interacts with environment before learning from its experience
     memorySize: 10000,       // Size of the replay buffer
     gamma: 0.99f,          // Discount factor for rewards
     gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
-    lr: 3e-4f,            // Learning rate
+    lr: 1e-5f,            // Learning rate
+    width: 1024,
+    depth: 2,
     clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
     vClipRange: 0.2f,      // Clipping range for value loss
     cValue: 0.5f,          // Coefficient for value loss
-    ppoEpochs: 20,            // Number of PPO epochs
-    clipGradNorm: 0.5f,    // Maximum allowed gradient norm
-    displayPlot: myChart
+    ppoEpochs: 5,            // Number of PPO epochs
+    clipGradNorm: 0.5f, 
+    entropyCoefficient: 0.1f,
+    displayPlot: myChart,
+    useRNN: true
    );
 
-var envppo = new List<IEnvironment<float[]>> { new CartPole(), new CartPole() };
+var envppo = new List<IEnvironment<float[]>> { new SequencePushEnv() };
 var myAgentppo = new PPOAgent<float[]>(optsppo, envppo);
 
 //var myenv2ppo = new List<IEnvironment<float[]>>{ new TwoNumbersGame1d() };
 //var myAgent2ppo = new PPOForTesting<float[]>(optsppo, myenv2ppo);
 
-for (int i = 0; i < 10000; i++)
+for (int i = 0; i < 10000000; i++)
 {
      myAgentppo.Step();
     //myAgent2ppo.Step();sss
@@ -37,7 +41,7 @@ for (int i = 0; i < 10000; i++)
 
 
 
-
+Console.ReadLine();
 
 
 
