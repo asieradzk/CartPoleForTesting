@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartPoleForTesting", "CartPoleForTesting.csproj", "{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix", "..\..\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj", "{FBB0AABF-AF41-415A-811A-920E1C38CF9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
