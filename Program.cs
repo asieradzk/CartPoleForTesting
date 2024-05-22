@@ -12,24 +12,24 @@ var mychart2 = new WinformsChart();
 
 //PPO
 var optsppo = new PPOAgentOptions(
-    batchSize: 8,           // Number of EPISODES agent interacts with environment before learning from its experience
+    batchSize: 24,           // Number of EPISODES agent interacts with environment before learning from its experience
     memorySize: 10000,       // Size of the replay buffer
     gamma: 0.99f,          // Discount factor for rewards
     gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
-    lr: 3e-4f,            // Learning rate
-    width: 256,
-    depth: 2,
+    lr: 1e-3f,            // Learning rate
+    width: 512,
+    depth: 4,
     clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
     vClipRange: 0.2f,      // Clipping range for value loss
     cValue: 0.5f,          // Coefficient for value loss
-    ppoEpochs: 1,            // Number of PPO epochs
-    clipGradNorm: 0.5f, 
-    entropyCoefficient: 0.1f,
+    ppoEpochs: 15,            // Number of PPO epochs
+    clipGradNorm: 0.5f,
+    entropyCoefficient: 0.005f,
     displayPlot: myChart,
     useRNN: false
    );
 
-var envppo = new List<IEnvironment<float[]>> { new CartPole(), new CartPole()};
+var envppo = new List<IEnvironment<float[]>> { new CartPole()};
 var myAgentppo = new PPOAgent<float[]>(optsppo, envppo);
 
 //var myenv2ppo = new List<IEnvironment<float[]>>{ new TwoNumbersGame1d() };
@@ -37,7 +37,7 @@ var myAgentppo = new PPOAgent<float[]>(optsppo, envppo);
 
 for (int i = 0; i < 10000000; i++)
 {
-     myAgentppo.Step();
+     myAgentppo.Step(true);
     //myAgent2ppo.Step();sss
 }
 
@@ -51,9 +51,9 @@ for (int i = 0; i < 10000000; i++)
 
 
 //DQN
-var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, nStepReturn: 30, duelingDQN: false, doubleDQN: true, noisyLayers: true, noisyLayersScale: 0.01f, categoricalDQN: true, batchSize: 128, memorySize: 10000, gamma: 0.99f, epsStart: 1f, epsEnd: 0.05f, epsDecay: 150f, tau: 0.005f, lr: 1e-3f, displayPlot: myChart, width: 512, depth: 2);
-var env = new List<IEnvironmentAsync<float[,]>> { new CartPole2dAsync(), new CartPole2dAsync()};
-var myAgent = new BaseRolloutAgent<float[,]>(opts, env);
+var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, nStepReturn: 30, duelingDQN: true, doubleDQN: true, noisyLayers: true, noisyLayersScale: 0.01f, categoricalDQN: true, batchSize: 128, memorySize: 10000, gamma: 0.99f, epsStart: 1f, epsEnd: 0.05f, epsDecay: 150f, tau: 0.005f, lr: 1e-3f, displayPlot: myChart, width: 512, depth: 2);
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync()};
+var myAgent = new BaseRolloutAgent<float[]>(opts, env);
 
 
 for (int i = 0; i < 6000; i++)
