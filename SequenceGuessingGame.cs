@@ -36,7 +36,7 @@ namespace CartPoleForTesting
             maxSteps = 50;
             isDone = false;
             stateSize = 1;
-            actionSize = new int[] { 20 };
+            actionSize = new int[] { 5 };
             randomLength = random.Next(1, 47);
             stepCounter =1;
             state = randomLength * 100f;

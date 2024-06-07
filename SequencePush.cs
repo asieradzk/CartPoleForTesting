@@ -21,7 +21,7 @@ public class SequencePushEnv : IEnvironment<float[]>
     public float[] GetCurrentState()
     {
 
-        return new float[] { stepCounter, state};
+        return new float[] { stepCounter/10f, state/10f};
     }
     float previousStep;
 
