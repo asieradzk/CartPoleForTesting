@@ -52,9 +52,9 @@ for (int i = 0; i < 10000000; i++)
 
 
 //DQN
-var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, nStepReturn: 200, duelingDQN: true, doubleDQN: true, noisyLayers: true, noisyLayersScale: 0.02f, categoricalDQN: true, batchSize: 128, memorySize: 10000, gamma: 0.99f, epsStart: 1f, epsEnd: 0.05f, epsDecay: 150f, tau: 0.005f, lr: 5e-3f, displayPlot: myChart, width: 512, depth: 2);
+var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, nStepReturn: 200, duelingDQN: true, doubleDQN: true, noisyLayers: false, noisyLayersScale: 0.02f, categoricalDQN: false, batchSize: 128, memorySize: 10000, gamma: 0.99f, epsStart: 1f, epsEnd: 0.05f, epsDecay: 150f, tau: 0.005f, lr: 5e-3f, displayPlot: myChart, width: 512, depth: 2);
 var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
-var myAgent = new LocalDiscreteRolloutAgent<float[]>(opts, env);
+var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsppo, env);
 
 
 for (int i = 0; i < 8000; i++)
