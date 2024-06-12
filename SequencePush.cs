@@ -1,72 +1,69 @@
-﻿using OneOf;
+﻿using System;
+using System.Threading.Tasks;
+using OneOf;
 using RLMatrix;
 
-public class SequencePushEnv : IEnvironment<float[]>
+public class SequencePushEnv : IEnvironmentAsync<float[]>
 {
-
     public int stepCounter { get; set; }
     public int maxSteps { get; set; }
     public bool isDone { get; set; }
     public OneOf<int, (int, int)> stateSize { get; set; }
     public int[] actionSize { get; set; }
 
-    public SequencePushEnv()
-    {
-        Initialise();
-    }
-
     float state;
+    float[] directions;
     int direction;
     Random random = new Random();
-    public float[] GetCurrentState()
-    {
-
-        return new float[] { stepCounter/10f, state/10f};
-    }
     float previousStep;
 
-    public void Initialise()
+    public SequencePushEnv()
     {
-        maxSteps = 50;
+       InitialiseAsync();
+    }
+
+    public Task<float[]> GetCurrentState()
+    {
+        return Task.FromResult(new float[] { stepCounter, directions[0], directions[1], directions[2], directions[3] });
+    }
+
+    public void InitialiseAsync()
+    {
+        directions = new float[] { 0f, 0f, 0f, 0f };
+        maxSteps = 20;
         isDone = false;
-        stateSize = 2;
-        actionSize = new int[] { 3 };
+        stateSize = 5;
+        actionSize = new int[] { 4 };
         direction = random.Next(0, 3);
-        Console.WriteLine($"Direction is {direction}");
+        //set direction to 1 depending on index
+        directions[direction] = 1f;
         stepCounter = 1;
-        state = (direction + 2)*10f;
-        previousStep = 0f;
     }
 
-    public void Reset()
+    public Task Reset()
     {
-        Initialise();
+        InitialiseAsync();
+        return Task.CompletedTask;
     }
 
-    public float Step(int[] actionsIds)
+    public Task<(float, bool)> Step(int[] actionsIds)
     {
-        //stepping
+        if(isDone)
+            Reset().Wait(); // Reset if done
+
         stepCounter++;
-        previousStep = actionsIds[0];
-        if(stepCounter > 4)
+
+        if (stepCounter > 4)
         {
-            state = -1f;
+            directions = new float[] { 0f, 0f, 0f, 0f };
         }
 
-        if(stepCounter > maxSteps)
+        if (stepCounter > maxSteps)
         {
             isDone = true;
         }
 
-        if (actionsIds[0] == direction )
-        {
-            return 1f;
-        }
-        else
-        {
-            return -1f;
-        }
+        float reward = actionsIds[0] == direction ? 1f : -2f;
+        return Task.FromResult((reward, isDone));
     }
 }
-
-

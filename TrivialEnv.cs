@@ -1,57 +1,63 @@
-﻿using OneOf;
-using RLMatrix;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using OneOf;
+using RLMatrix;
 
-namespace CartPoleForTesting
+public class TrivialEnvironmentAsync : IEnvironmentAsync<float[]>
 {
-    public class TrivialEnvironment : IEnvironment<float[]>
+    public const float CorrectAnswerReward = 1;
+    public const float WrongAnswerPenalty = -1;
+
+    public float[] state;
+    public int stepCounter { get; set; }
+    public int maxSteps { get; set; } = 10;
+    public bool isDone { get; set; }
+    public OneOf<int, (int, int)> stateSize { get; set; } = 1;
+    public int[] actionSize { get; set; } = new int[] { 2 };
+
+    public TrivialEnvironmentAsync()
     {
-        public const float CorrectAnswerReward = 1;
-        public const float WrongAnswerPenalty = -1;
+        InitialiseAsync();
+    }
 
-        public float[] state;
+    public Task<float[]> GetCurrentState()
+    {
+        return Task.FromResult(state);
+    }
 
-        public static int RandomValue()
+    public void InitialiseAsync()
+    {
+        Reset();
+    }
+
+    public Task Reset()
+    {
+        state = new float[1] { RandomValue() };
+        stepCounter = 0;
+        isDone = false;
+        return Task.CompletedTask;
+    }
+
+    public Task<(float, bool)> Step(int[] actionsIds)
+    {
+        if (isDone)
+            Reset().Wait(); // Reset if done
+
+        float input = state[0];
+        float output = actionsIds[0];
+        state[0] = RandomValue();
+
+        if (stepCounter++ >= maxSteps)
         {
-            return Random.Shared.Next(2);
+            isDone = true;
         }
 
-        public int stepCounter { get; set; }
-        public int maxSteps { get; set; } = 10;
-        public bool isDone { get; set; }
-        public OneOf<int, (int, int)> stateSize { get; set; } = 1;
-        public int[] actionSize { get; set; } = [2];
+        float reward = input == output ? CorrectAnswerReward : WrongAnswerPenalty;
+        return Task.FromResult((reward, isDone));
+    }
 
-        public float[] GetCurrentState() => state;
-
-        public TrivialEnvironment() => Initialise();
-
-        public void Initialise() => Reset();
-
-        public void Reset()
-        {
-            state = new float[1] { RandomValue() };
-            stepCounter = 0;
-            isDone = false;
-        }
-
-        public float Step(int[] actionsIds)
-        {
-            float input = state[0];
-            float output = actionsIds[0];
-
-            state[0] = RandomValue();
-
-            if (stepCounter++ >= maxSteps)
-            {
-                isDone = true;
-            }
-
-            return input == output ? CorrectAnswerReward : WrongAnswerPenalty;
-        }
+    private static int RandomValue()
+    {
+        return Random.Shared.Next(2);
     }
 }
