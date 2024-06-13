@@ -23,6 +23,9 @@ public class CartPoleAsync : IEnvironmentAsync<float[]>
 
     public Task<float[]> GetCurrentState()
     {
+        if (isDone)
+            Reset().Wait(); // Reset if done
+
         return Task.FromResult(myState ?? new float[4] { 0, 0, 0, 0 });
     }
 

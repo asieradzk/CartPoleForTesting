@@ -22,6 +22,9 @@ public class SequenceGuessingEnv : IEnvironmentAsync<float[]>
 
     public Task<float[]> GetCurrentState()
     {
+        if (isDone)
+            Reset().Wait(); // Reset if done
+
         return Task.FromResult(new float[] { state, stepCounter });
     }
 

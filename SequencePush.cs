@@ -24,6 +24,9 @@ public class SequencePushEnv : IEnvironmentAsync<float[]>
 
     public Task<float[]> GetCurrentState()
     {
+        if (isDone)
+            Reset().Wait(); // Reset if done
+
         return Task.FromResult(new float[] { stepCounter, directions[0], directions[1], directions[2], directions[3] });
     }
 

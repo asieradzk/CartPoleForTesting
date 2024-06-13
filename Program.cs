@@ -9,21 +9,21 @@ var myChart = new WinformsChart();
 
 
 var optsppo = new PPOAgentOptions(
-    batchSize: 32,           // Nu8mber of EPISODES agent interacts with environment before learning from its experience
+    batchSize: 3,           // Nu8mber of EPISODES agent interacts with environment before learning from its experience
     memorySize: 10000,       // Size of the replay buffer
     gamma: 0.99f,          // Discount factor for rewards
     gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
-    lr: 1e-4f,            // Learning rate
-    width: 256,
+    lr: 1e-3f,            // Learning rate
+    width: 512,
     depth: 2,
     clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
     vClipRange: 0.2f,      // Clipping range for value loss
     cValue: 0.5f,          // Coefficient for value loss
-    ppoEpochs: 20,            // Number of PPO epoch
+    ppoEpochs: 1,            // Number of PPO epoch
     clipGradNorm: 0.5f,
     entropyCoefficient: 0.005f,
     displayPlot: myChart,
-    useRNN: true
+    useRNN: false
    );
 
 
@@ -31,7 +31,7 @@ var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, 
 
 
 
-var env = new List<IEnvironmentAsync<float[]>> { new SequenceGuessingEnv() };
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync() };
 
 
 //----------------------------------can use PPO options \/ or DQN options
