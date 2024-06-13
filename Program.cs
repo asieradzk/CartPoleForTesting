@@ -9,7 +9,7 @@ var myChart = new WinformsChart();
 
 
 var optsppo = new PPOAgentOptions(
-    batchSize: 3,           // Nu8mber of EPISODES agent interacts with environment before learning from its experience
+    batchSize: 32,           // Nu8mber of EPISODES agent interacts with environment before learning from its experience
     memorySize: 10000,       // Size of the replay buffer
     gamma: 0.99f,          // Discount factor for rewards
     gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
@@ -19,7 +19,7 @@ var optsppo = new PPOAgentOptions(
     clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
     vClipRange: 0.2f,      // Clipping range for value loss
     cValue: 0.5f,          // Coefficient for value loss
-    ppoEpochs: 1,            // Number of PPO epoch
+    ppoEpochs: 20,            // Number of PPO epoch
     clipGradNorm: 0.5f,
     entropyCoefficient: 0.005f,
     displayPlot: myChart,
@@ -31,11 +31,11 @@ var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, 
 
 
 
-var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync() };
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
 
 
 //----------------------------------can use PPO options \/ or DQN options
-var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsppo, env);
+var myAgent = new LocalDiscreteRolloutAgent<float[]>(opts, env);
 
 //var connString = "http://localhost:5000";
 //var myRemoteAgent = new RemoteDiscreteRolloutAgent<float[]>(opts, env, connString);s
