@@ -14,7 +14,6 @@
     <PackageReference Include="Gym.NET.Environments" Version="0.2.0" />
     <PackageReference Include="Gym.NET.Rendering.WinForm" Version="0.2.0" />
     <PackageReference Include="HIC.System.Windows.Forms.DataVisualization" Version="1.0.1" />
-    <PackageReference Include="OneOf" Version="3.0.263" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="TorchSharp-cuda-windows" Version="0.102.2" />
     <PackageReference Include="TorchVision" Version="0.102.2" />
@@ -22,13 +21,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix.Common\RLMatrix.Common.csproj" />
+    <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix.Remote\RLMatrix.Remote.csproj" />
+    <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="RLMatrix.WinformsChart">
-      <HintPath>..\..\RLMat2\RLMatrix\src\RLMatrix.WinformsChart\bin\Release\net6.0-windows\RLMatrix.WinformsChart.dll</HintPath>
+      <HintPath>..\..\RLMat2\RLMatrix\src\RLMatrix.WinformsChart\bin\Debug\net6.0-windows\RLMatrix.WinformsChart.dll</HintPath>
     </Reference>
   </ItemGroup>
-	
-  <ItemGroup>
-    <ProjectReference Include="D:\Documents\dotNetProjects\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj" />
-  </ItemGroup>
+
 
 </Project>

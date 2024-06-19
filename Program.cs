@@ -22,23 +22,34 @@ var optsppo = new PPOAgentOptions(
     ppoEpochs: 20,            // Number of PPO epoch
     clipGradNorm: 0.5f,
     entropyCoefficient: 0.005f,
-    displayPlot: myChart,
     useRNN: false
    );
 
+var optsdqn = new DQNAgentOptions(numAtoms: 51,
+    batchedActionProcessing: true,
+    boltzmannExploration: true,
+    prioritizedExperienceReplay: true,
+    nStepReturn: 200, duelingDQN: true,
+    doubleDQN: true, noisyLayers: true,
+    noisyLayersScale: 0.02f,
+    categoricalDQN: true,
+    batchSize: 128,
+    memorySize: 10000,
+    gamma: 0.99f,
+    epsStart: 1f,
+    epsEnd: 0.05f,
+    epsDecay: 150f,
+    tau: 0.005f,
+    lr: 5e-3f,
+    width: 512,
+    depth: 2);
 
-var opts = new DQNAgentOptions(numAtoms: 51, prioritizedExperienceReplay: true, nStepReturn: 200, duelingDQN: true, doubleDQN: true, noisyLayers: true, noisyLayersScale: 0.02f, categoricalDQN: false, batchSize: 128, memorySize: 10000, gamma: 0.99f, epsStart: 1f, epsEnd: 0.05f, epsDecay: 150f, tau: 0.005f, lr: 5e-3f, displayPlot: myChart, width: 512, depth: 2);
 
 
-
-var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
-
-
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
 //----------------------------------can use PPO options \/ or DQN options
-var myAgent = new LocalDiscreteRolloutAgent<float[]>(opts, env);
+var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env, myChart);
 
-//var connString = "http://localhost:5000";
-//var myRemoteAgent = new RemoteDiscreteRolloutAgent<float[]>(opts, env, connString);s
 
 
 //var savePath = @"C:\temp";
@@ -54,7 +65,6 @@ Console.WriteLine("doneTraining");
 for (int i = 0; i < 8000; i++)
 {
     await myAgent.Step(false);
-    //myAgentOld.Step(false);
 
 }
 

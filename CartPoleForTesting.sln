@@ -5,7 +5,15 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartPoleForTesting", "CartPoleForTesting.csproj", "{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix", "..\..\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj", "{FBB0AABF-AF41-415A-811A-920E1C38CF9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix.Common", "..\..\RLMat2\RLMatrix\src\RLMatrix.Common\RLMatrix.Common.csproj", "{439018C8-DC2B-4E41-AC97-AC190640C7CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix.Remote", "..\..\RLMat2\RLMatrix\src\RLMatrix.Remote\RLMatrix.Remote.csproj", "{DBFA6970-A4D5-41D3-88B1-1B9E906B2A20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartPole-v1-Client", "..\..\RLMat2\RLMatrix\examples\Networked\CartPole-v1-Client\CartPole-v1-Client.csproj", "{76D81015-1846-471F-9863-B83ADD612F5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix", "..\..\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj", "{5A9AF050-707B-4FB4-878F-7FB6A1704562}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix.Common.Remote", "..\..\RLMat2\RLMatrix\src\RLMatrix.Common.Remote\RLMatrix.Common.Remote.csproj", "{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +25,26 @@ Global
 		{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ABB0042-6B09-48A2-B8C5-21E70A820B0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBB0AABF-AF41-415A-811A-920E1C38CF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{439018C8-DC2B-4E41-AC97-AC190640C7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{439018C8-DC2B-4E41-AC97-AC190640C7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{439018C8-DC2B-4E41-AC97-AC190640C7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{439018C8-DC2B-4E41-AC97-AC190640C7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFA6970-A4D5-41D3-88B1-1B9E906B2A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFA6970-A4D5-41D3-88B1-1B9E906B2A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFA6970-A4D5-41D3-88B1-1B9E906B2A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFA6970-A4D5-41D3-88B1-1B9E906B2A20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76D81015-1846-471F-9863-B83ADD612F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D81015-1846-471F-9863-B83ADD612F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D81015-1846-471F-9863-B83ADD612F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D81015-1846-471F-9863-B83ADD612F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A9AF050-707B-4FB4-878F-7FB6A1704562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A9AF050-707B-4FB4-878F-7FB6A1704562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A9AF050-707B-4FB4-878F-7FB6A1704562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A9AF050-707B-4FB4-878F-7FB6A1704562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
