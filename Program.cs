@@ -46,19 +46,14 @@ var optsdqn = new DQNAgentOptions(numAtoms: 51,
 
 
 
-var env = new List<IContinuousEnvironmentAsync<float[]>> { new TrivialContinuousEnvironmentAsync(), new TrivialContinuousEnvironmentAsync(), new TrivialContinuousEnvironmentAsync(), new TrivialContinuousEnvironmentAsync(), };
+var env = new List<IContinuousEnvironmentAsync<float[]>> { new TrivialContinuousEnvironmentAsync(), new TrivialContinuousEnvironmentAsync(), };
 //----------------------------------can use PPO options \/ or DQN options
 var myAgent = new LocalContinuousRolloutAgent<float[]>(optsppo, env, myChart);
 
-/*
-var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
-//----------------------------------can use PPO options \/ or DQN options
-var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsppo, env, myChart);
-*/
 
 //var savePath = @"C:\temp";
 //await myAgent.Load(savePath);
-for (int i = 0; i < 1200; i++)
+for (int i = 0; i < 3200; i++)
 {
    await myAgent.Step();
 }
@@ -66,7 +61,7 @@ for (int i = 0; i < 1200; i++)
 
 Console.WriteLine("doneTraining");
 
-for (int i = 0; i < 800; i++)
+for (int i = 0; i < 8000; i++)
 {
     await myAgent.Step(false);
 
