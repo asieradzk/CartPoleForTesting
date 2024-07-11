@@ -13,7 +13,7 @@ var optsppo = new PPOAgentOptions(
     memorySize: 10000,       // Size of the replay buffer
     gamma: 0.99f,          // Discount factor for rewards
     gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
-    lr: 1e-4f,            // Learning rate
+    lr: 1e-3f,            // Learning rate
     width: 512,
     depth: 2,
     clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
@@ -46,14 +46,14 @@ var optsdqn = new DQNAgentOptions(numAtoms: 51,
 
 
 
-var env = new List<IContinuousEnvironmentAsync<float[]>> { new TrivialContinuousEnvironmentAsync(), new TrivialContinuousEnvironmentAsync(), };
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync() };
 //----------------------------------can use PPO options \/ or DQN options
-var myAgent = new LocalContinuousRolloutAgent<float[]>(optsppo, env, myChart);
+var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env, myChart);
 
 
 //var savePath = @"C:\temp";
 //await myAgent.Load(savePath);
-for (int i = 0; i < 3200; i++)
+for (int i = 0; i < 32000; i++)
 {
    await myAgent.Step();
 }
