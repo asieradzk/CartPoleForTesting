@@ -1,11 +1,7 @@
 ﻿using RLMatrix;
 using RLMatrix.Agents.Common;
-using RLMatrix.WinformsChart;
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
-
-
-var myChart = new WinformsChart();
 
 
 var optsppo = new PPOAgentOptions(
@@ -22,38 +18,44 @@ var optsppo = new PPOAgentOptions(
     ppoEpochs: 3,            // Number of PPO epoch
     clipGradNorm: 0.5f,
     entropyCoefficient: 0.005f,
-    useRNN: false
+    useRNN: true
    );
 
 var optsdqn = new DQNAgentOptions(numAtoms: 51,
-    batchedActionProcessing: true,
-    boltzmannExploration: true,
-    prioritizedExperienceReplay: true,
-    nStepReturn: 200, duelingDQN: true,
-    doubleDQN: true, noisyLayers: true,
-    noisyLayersScale: 0.02f,
-    categoricalDQN: true,
-    batchSize: 128,
-    memorySize: 10000,
-    gamma: 0.99f,
-    epsStart: 1f,
-    epsEnd: 0.05f,
-    epsDecay: 150f,
-    tau: 0.005f,
-    lr: 5e-3f,
-    width: 512,
-    depth: 2);
+            batchedActionProcessing: true,
+            boltzmannExploration: false,
+            prioritizedExperienceReplay: true,
+            nStepReturn: 200, duelingDQN: true,
+            doubleDQN: true, noisyLayers: true,
+            noisyLayersScale: 0.02f,
+            categoricalDQN: true,
+            batchSize: 128,
+            memorySize: 10000,
+            gamma: 0.99f,
+            epsStart: 1f,
+            epsEnd: 0.05f,
+            epsDecay: 150f,
+            tau: 0.005f,
+            lr: 5e-3f,
+            width: 512,
+            depth: 2);
 
-
-
-var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync() };
+/*
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
 //----------------------------------can use PPO options \/ or DQN options
-var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env, myChart);
+var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env);
+*/
+
+
+
+var env = new List<IContinuousEnvironmentAsync<float[]>> { new TrivialContinuousEnvironmentAsync() };
+//----------------------------------can use PPO options \/ or DQN options
+var myAgent = new LocalContinuousRolloutAgent<float[]>(optsppo, env);
 
 
 //var savePath = @"C:\temp";
 //await myAgent.Load(savePath);
-for (int i = 0; i < 32000; i++)
+for (int i = 0; i < 320000; i++)
 {
    await myAgent.Step();
 }

@@ -26,11 +26,6 @@
     <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="RLMatrix.WinformsChart">
-      <HintPath>..\..\RLMat2\RLMatrix\src\RLMatrix.WinformsChart\bin\Debug\net6.0-windows\RLMatrix.WinformsChart.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 
 </Project>

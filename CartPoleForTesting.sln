@@ -15,9 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix", "..\..\RLMat2\RL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix.Common.Remote", "..\..\RLMat2\RLMatrix\src\RLMatrix.Common.Remote\RLMatrix.Common.Remote.csproj", "{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPoledotnet472", "..\CarPoledotnet472\CarPoledotnet472.csproj", "{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartPoleCore31", "..\CartPoleCore31\CartPoleCore31.csproj", "{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartPoleCore31", "..\CartPoleCore31\CartPoleCore31.csproj", "{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,14 +73,6 @@ Global
 		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Release|x64.ActiveCfg = Release|Any CPU
 		{3B778D14-FA1B-42CA-B7CE-019CC56A6F2D}.Release|x64.Build.0 = Release|Any CPU
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Debug|x64.ActiveCfg = Debug|x64
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Debug|x64.Build.0 = Debug|x64
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Release|x64.ActiveCfg = Release|x64
-		{CA2911CA-A55E-4A70-844E-9A3D80A8E7BA}.Release|x64.Build.0 = Release|x64
 		{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}.Debug|x64.ActiveCfg = Debug|Any CPU
