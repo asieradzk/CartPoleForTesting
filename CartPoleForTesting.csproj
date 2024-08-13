@@ -20,11 +20,15 @@
     <PackageReference Include="WinForms.DataVisualization" Version="1.8.0" />
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="RLMatrix" Version="0.4.3" />
+	</ItemGroup>
+
+  <!--<ItemGroup>
     <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix.Common\RLMatrix.Common.csproj" />
     <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix.Remote\RLMatrix.Remote.csproj" />
     <ProjectReference Include="..\..\RLMat2\RLMatrix\src\RLMatrix\RLMatrix.csproj" />
-  </ItemGroup>
+  </ItemGroup>-->
 
 
 
