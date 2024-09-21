@@ -41,18 +41,18 @@ var optsdqn = new DQNAgentOptions(numAtoms: 51,
             width: 512,
             depth: 2);
 
-/*
-var env = new List<IEnvironmentAsync<float[]>> { new IdentityToolExampleDiscrete(), new IdentityToolExampleDiscrete(), new IdentityToolExampleDiscrete(), new IdentityToolExampleDiscrete(), };
+
+var env = new List<IEnvironmentAsync<float[]>> { new IdentityToolTestDiscrete(), new IdentityToolTestDiscrete(), new IdentityToolTestDiscrete(), new IdentityToolTestDiscrete(), };
 //----------------------------------can use PPO options \/ or DQN options
 var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env);
-*/
 
 
 
+/*
 var env = new List<IContinuousEnvironmentAsync<float[]>> { new IdentityToolTest(), new IdentityToolTest(), };
 //----------------------------------can use PPO options \/ or DQN options
 var myAgent = new LocalContinuousRolloutAgent<float[]>(optsppo, env);
-
+*/
 
 //var savePath = @"C:\temp";
 //await myAgent.Load(savePath);

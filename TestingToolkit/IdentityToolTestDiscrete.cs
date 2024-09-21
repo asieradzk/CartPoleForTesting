@@ -51,6 +51,7 @@ namespace CartPoleForTesting.TestingToolkit
         public float RewardDiscrete()
         {
             float reward = 0;
+            isDone = true;
             if (selectNum1 == myNum1) reward += 1;
             if (selectNum2 == myNum2) reward += 1;
             if (selectNum3 == myNum3) reward += 1;
