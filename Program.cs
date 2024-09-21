@@ -1,16 +1,17 @@
-﻿using RLMatrix;
+﻿using CartPoleForTesting.TestingToolkit;
+using RLMatrix;
 using RLMatrix.Agents.Common;
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
 
 var optsppo = new PPOAgentOptions(
-    batchSize: 12,        // Nu8mber of EPISODES agent interacts with environment before learning from its experience
+    batchSize: 128,        // Nu8mber of EPISODES agent interacts with environment before learning from its experience
     memorySize: 10000,       // Size of the replay buffer
     gamma: 0.99f,          // Discount factor for rewards
     gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
     lr: 1e-3f,            // Learning rate
-    width: 512,
+    width: 128,
     depth: 2,
     clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
     vClipRange: 0.2f,      // Clipping range for value loss
@@ -22,14 +23,14 @@ var optsppo = new PPOAgentOptions(
    );
 
 var optsdqn = new DQNAgentOptions(numAtoms: 51,
-            batchedActionProcessing: true,
+            batchedActionProcessing: false,
             boltzmannExploration: false,
             prioritizedExperienceReplay: true,
-            nStepReturn: 200, duelingDQN: true,
+            nStepReturn: 1, duelingDQN: true,
             doubleDQN: true, noisyLayers: true,
             noisyLayersScale: 0.02f,
-            categoricalDQN: true,
-            batchSize: 128,
+            categoricalDQN: false,
+            batchSize: 32,
             memorySize: 10000,
             gamma: 0.99f,
             epsStart: 1f,
@@ -41,14 +42,14 @@ var optsdqn = new DQNAgentOptions(numAtoms: 51,
             depth: 2);
 
 /*
-var env = new List<IEnvironmentAsync<float[]>> { new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), new CartPoleAsync(), };
+var env = new List<IEnvironmentAsync<float[]>> { new IdentityToolExampleDiscrete(), new IdentityToolExampleDiscrete(), new IdentityToolExampleDiscrete(), new IdentityToolExampleDiscrete(), };
 //----------------------------------can use PPO options \/ or DQN options
 var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env);
 */
 
 
 
-var env = new List<IContinuousEnvironmentAsync<float[]>> { new TrivialContinuousEnvironmentAsync() };
+var env = new List<IContinuousEnvironmentAsync<float[]>> { new IdentityToolTest(), new IdentityToolTest(), };
 //----------------------------------can use PPO options \/ or DQN options
 var myAgent = new LocalContinuousRolloutAgent<float[]>(optsppo, env);
 
@@ -57,7 +58,7 @@ var myAgent = new LocalContinuousRolloutAgent<float[]>(optsppo, env);
 //await myAgent.Load(savePath);
 for (int i = 0; i < 320000; i++)
 {
-   await myAgent.Step();
+    await myAgent.Step();
 }
 //await myAgent.Save(savePath);
 

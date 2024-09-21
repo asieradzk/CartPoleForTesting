@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix.Common.Remote", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartPoleCore31", "..\CartPoleCore31\CartPoleCore31.csproj", "{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLMatrix.Toolkit", "..\..\RLMat2\RLMatrix\src\RLMatrix.Toolkit\RLMatrix.Toolkit.csproj", "{221E2FED-6429-4CF5-B445-8B5D10E54D15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,14 @@ Global
 		{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}.Release|x64.ActiveCfg = Release|Any CPU
 		{D8FD4EB0-21E3-4733-AE3F-8D6DB59BFD4D}.Release|x64.Build.0 = Release|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Debug|x64.Build.0 = Debug|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Release|x64.ActiveCfg = Release|Any CPU
+		{221E2FED-6429-4CF5-B445-8B5D10E54D15}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
