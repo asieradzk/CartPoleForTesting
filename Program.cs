@@ -1,6 +1,7 @@
 ﻿using CartPoleForTesting.TestingToolkit;
 using RLMatrix;
 using RLMatrix.Agents.Common;
+using RLMatrix.Environments;
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
@@ -42,7 +43,7 @@ var optsdqn = new DQNAgentOptions(numAtoms: 51,
             depth: 2);
 
 
-var env = new List<IEnvironmentAsync<float[]>> { new IdentityToolTestDiscrete(), new IdentityToolTestDiscrete(), new IdentityToolTestDiscrete(), new IdentityToolTestDiscrete(), };
+var env = new List<IEnvironmentAsync<float[]>> { new CartPoleToolTest().RLInit(), new CartPoleToolTest().RLInit(), new CartPoleToolTest().RLInit(), new CartPoleToolTest().RLInit(), };
 //----------------------------------can use PPO options \/ or DQN options
 var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env);
 
