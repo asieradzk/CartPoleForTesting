@@ -6,46 +6,50 @@ using RLMatrix.Environments;
 Console.WriteLine("Hello, World!");
 
 
-var optsppo = new PPOAgentOptions(
-    batchSize: 128,        // Nu8mber of EPISODES agent interacts with environment before learning from its experience
-    memorySize: 10000,       // Size of the replay buffer
-    gamma: 0.99f,          // Discount factor for rewards
-    gaeLambda: 0.95f,      // Lambda factor for Generalized Advantage Estimation
-    lr: 1e-3f,            // Learning rate
-    width: 128,
-    depth: 2,
-    clipEpsilon: 0.2f,     // Clipping factor for PPO's objective function
-    vClipRange: 0.2f,      // Clipping range for value loss
-    cValue: 0.5f,          // Coefficient for value loss
-    ppoEpochs: 3,            // Number of PPO epoch
-    clipGradNorm: 0.5f,
-    entropyCoefficient: 0.005f,
-    useRNN: true
-   );
+var optsPPO = new PPOAgentOptions(
+   batchSize: 128,        // Number of experiences used per training step
+   memorySize: 10000,     // Total experiences stored for training
+   gamma: 0.99f,          // Reduces importance of future rewards
+   gaeLambda: 0.95f,      // Balances bias-variance in advantage estimation
+   lr: 1e-3f,             // Step size for gradient descent
+   width: 128,            // Neurons per hidden layer
+   depth: 2,              // Number of hidden layers
+   clipEpsilon: 0.2f,     // Limits policy update size
+   vClipRange: 0.2f,      // Limits value function update
+   cValue: 0.5f,          // Adjusts importance of value function loss
+   ppoEpochs: 3,          // Training iterations per batch
+   clipGradNorm: 0.5f,    // Prevents extreme gradient updates
+   entropyCoefficient: 0.005f,  // Encourages exploration
+   useRNN: true           // Enables memory for temporal dependencies
+);
 
-var optsdqn = new DQNAgentOptions(numAtoms: 51,
-            batchedActionProcessing: false,
-            boltzmannExploration: false,
-            prioritizedExperienceReplay: true,
-            nStepReturn: 1, duelingDQN: true,
-            doubleDQN: true, noisyLayers: true,
-            noisyLayersScale: 0.02f,
-            categoricalDQN: false,
-            batchSize: 32,
-            memorySize: 10000,
-            gamma: 0.99f,
-            epsStart: 1f,
-            epsEnd: 0.05f,
-            epsDecay: 150f,
-            tau: 0.005f,
-            lr: 5e-3f,
-            width: 512,
-            depth: 2);
+var optsDQN = new DQNAgentOptions(
+   numAtoms: 51,                     // Discretization for value distribution
+   batchedActionProcessing: false,   // Single vs. multiple action selection
+   boltzmannExploration: false,      // Temperature-based action selection
+   prioritizedExperienceReplay: true,  // Focuses on important experiences
+   nStepReturn: 100,                   // Future steps considered for updates
+   duelingDQN: true,                 // Separate value and advantage streams
+   doubleDQN: true,                  // Reduces overestimation of Q-values
+   noisyLayers: true,                // Adds adaptive exploration
+   noisyLayersScale: 0.02f,          // Controls exploration via noise
+   categoricalDQN: false,            // Learns value distribution
+   batchSize: 32,                    // Experiences used per training step
+   memorySize: 10000,                // Total experiences stored for training
+   gamma: 0.99f,                     // Reduces importance of future rewards
+   epsStart: 1f,                     // Initial exploration rate
+   epsEnd: 0.05f,                    // Final exploration rate
+   epsDecay: 150f,                   // Speed of exploration decay
+   tau: 0.005f,                      // Rate of target network update
+   lr: 5e-3f,                        // Step size for gradient descent
+   width: 128,                       // Neurons per hidden layer
+   depth: 2                          // Number of hidden layers
+);
 
 
-var env = new List<IEnvironmentAsync<float[]>> { new CartPoleToolTest().RLInit(), new CartPoleToolTest().RLInit(), new CartPoleToolTest().RLInit(), new CartPoleToolTest().RLInit(), };
+var env = new List<IEnvironmentAsync<float[]>> { new IdentityToolTestVectorObsDiscrete().RLInit(), new IdentityToolTestVectorObsDiscrete().RLInit(), new IdentityToolTestVectorObsDiscrete().RLInit(), new IdentityToolTestVectorObsDiscrete().RLInit(), };
 //----------------------------------can use PPO options \/ or DQN options
-var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsdqn, env);
+var myAgent = new LocalDiscreteRolloutAgent<float[]>(optsPPO, env);
 
 
 
